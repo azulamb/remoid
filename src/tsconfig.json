@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"outDir": "../remoid/components",
+		"module": "amd",
+		"target": "es2022",
+		"moduleResolution": "node",
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": false,
+		"keyofStringsOnly": true,
+		"sourceMap": false
+	},
+	"include": [
+		"../types.d.ts",
+		"./*.ts"
+	]
+}

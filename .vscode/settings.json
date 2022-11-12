@@ -1,0 +1,14 @@
+{
+	"deno.enablePaths": [
+		"remote",
+		"server"
+	],
+	"deno.enable": true,
+	"deno.codeLens.test": true,
+	"deno.unstable": true,
+	"cSpell.words": [
+		"keyevent",
+		"remoid",
+		"WAKEUP"
+	]
+}
