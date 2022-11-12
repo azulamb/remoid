@@ -9,7 +9,7 @@ import { TwitterLogin } from './twitter.ts';
 const config = await new Config().loadFromJSONFile('./config.json');
 const server = new Minirachne.Server();
 
-const middlewares = ((enableTwitter) => {
+const middleware = ((enableTwitter) => {
 	if (enableTwitter) {
 		const auth = new TwitterLogin(
 			server,
@@ -19,7 +19,7 @@ const middlewares = ((enableTwitter) => {
 			[config.getTwitter().user],
 		);
 		server.router.add(auth);
-		return auth.middlewares;
+		return auth.middleware;
 	}
 
 	const through = new (class implements Minirachne.Middleware {
@@ -28,7 +28,7 @@ const middlewares = ((enableTwitter) => {
 			return Promise.resolve();
 		}
 	})();
-	return new Minirachne.Middlewares().add(through);
+	return new Minirachne.MiddlewareManager().add(through);
 })(config.enableTwitter());
 
 server.setURL(new URL(config.getURL()));
@@ -37,7 +37,7 @@ const remote = new RemoteWebSocket(server).setAuthCode(config.getAuthCode());
 server.router.add('/remote', remote);
 
 const client = new ClientWebSocket(server, remote);
-server.router.add('/client', client, middlewares);
+server.router.add('/client', client, middleware);
 
 server.router.get('/capture', (data) => {
 	const capture = remote.getCapture();
@@ -46,10 +46,10 @@ server.router.get('/capture', (data) => {
 	}
 	const response = new Response(capture, { headers: { 'content-type': 'image/png' } });
 	return Promise.resolve(response);
-}, middlewares);
+}, middleware);
 
 console.log(Minirachne.createAbsolutePath(import.meta, '../docs'));
-server.router.add('/*', new Minirachne.StaticRoute(Minirachne.createAbsolutePath(import.meta, '../remoid')), middlewares);
+server.router.add('/*', new Minirachne.StaticRoute(Minirachne.createAbsolutePath(import.meta, '../remoid')), middleware);
 
 server.router.add('/*', new Minirachne.StaticRoute(Minirachne.createAbsolutePath(import.meta, '../docs')));
 server.run();
