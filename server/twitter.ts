@@ -84,19 +84,22 @@ export class TwitterLogin implements Minirachne.Route, Minirachne.Middleware {
 					oauth_token: uid,
 					oauth_verifier: code,
 				}).then((result) => {
-					const uid = result.oauth_token;
-
-					if (this.enableUsers.includes(uid.split('-')[0])) {
+					if (!this.enableUsers.includes(result.user_id)) {
 						throw Minirachne.HTTPErrors.client.Unauthorized();
 					}
 					const expires = new Date();
 					expires.setHours(expires.getHours() + this.LOGIN_HOURS);
 
-					this.user[uid] = Object.assign({
+					const key = (() => {
+						const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWQXYZ0123456789_';
+						return [...crypto.getRandomValues(new Uint8Array(256))].map((x) => chars[x % chars.length]).join('');
+					})();
+
+					this.user[key] = Object.assign({
 						expires: expires,
 					}, result);
 
-					this.setCookie(headers, 'logined', uid);
+					this.setCookie(headers, 'logined', key);
 
 					return response('/');
 				}).catch(() => {

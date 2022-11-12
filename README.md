@@ -22,14 +22,14 @@ Set config.
   * `config.json::adb`
   * ADB Path.
   * Use: Remote
-* `REMOID_SERVER` {required}
+* `REMOID_SERVER`
   * `config.json::url`
   * Server URL.
-  * Use: Server
-* `REMOID_AUTH_CODE` {required}
+  * Use: Remote(required), Server
+* `REMOID_AUTH_CODE`
   * `config.json::auth_code`
   * Remote <-> Server auth code.
-  * Use: Remote, Server
+  * Use: Remote(required), Server(required)
 * `TWITTER_CALLBACK`
   * `config.json::twitter_callback`
   * Twitter callback URL.
@@ -66,6 +66,8 @@ Overwrite env config.
 }
 ```
 
+Server & Remote load this config.
+
 ### Remote
 
 * Connect Android device.
@@ -74,6 +76,8 @@ Overwrite env config.
     * `apt-get install android-tools-adb android-tools-fastboot`
   * `adb devices`
   * `adb shell`
+    * Allow debug.
+    * ![Allow debug](allow_debug.png)
 * Start remoid.
   * `deno task remote`
 
@@ -84,3 +88,12 @@ Start server( `deno task main` ).
 #### Deno Deploy
 
 Set `server/server.ts` .
+
+## Other
+
+### Install deno in Raspberry Pi 4
+
+```sh
+curl -fsSL https://deno.land/x/install/install.sh | sh
+cargo install deno --locked
+```
