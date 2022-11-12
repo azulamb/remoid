@@ -16,7 +16,7 @@ export class TwitterLogin implements Minirachne.Route, Minirachne.Middleware {
 	// Route
 	public order!: number;
 	public pattern!: URLPattern;
-	public middlewares: Minirachne.Middlewares;
+	public middleware: Minirachne.MiddlewareManager;
 
 	constructor(
 		server: Minirachne.Server,
@@ -32,7 +32,7 @@ export class TwitterLogin implements Minirachne.Route, Minirachne.Middleware {
 			API_KEY_SECRET,
 		);
 		this.pattern = server.router.path(`/auth/(login|callback|logout|user)`);
-		this.middlewares = Minirachne.Middlewares.create(this);
+		this.middleware = Minirachne.MiddlewareManager.create(this);
 	}
 
 	private setCookie(headers: Headers, name: string, value: string) {

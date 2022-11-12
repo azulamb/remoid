@@ -57,12 +57,12 @@ Overwrite env config.
 ```json
 {
   "adb": "adb path",
-	"url": "http://localhost:8080/",
-	"auth_code": "ABCDEFGHIJKLMNOP",
-	"twitter_callback": "http://localhost:8080/auth/callback",
-	"twitter_api_key": "TWITTER_API_KEY",
-	"twitter_api_key_secret": "TWITTER_API_SECRET",
-	"twitter_user": "TWITTER_ID(not user name.Number only.)"
+  "url": "http://localhost:8080/",
+  "auth_code": "ABCDEFGHIJKLMNOP",
+  "twitter_callback": "http://localhost:8080/auth/callback",
+  "twitter_api_key": "TWITTER_API_KEY",
+  "twitter_api_key_secret": "TWITTER_API_SECRET",
+  "twitter_user": "TWITTER_ID(not user name.Number only.)"
 }
 ```
 
