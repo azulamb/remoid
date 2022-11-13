@@ -89,6 +89,10 @@ Start server( `deno task main` ).
 
 Set `server/server.ts` .
 
+## Sample architecture
+
+![Sample](architecture.svg)
+
 ## Other
 
 ### Install deno in Raspberry Pi 4
