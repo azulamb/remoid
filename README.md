@@ -83,11 +83,11 @@ Server & Remote load this config.
 
 ### Server
 
-Start server( `deno task main` ).
+Start server( `deno task server` ).
 
 #### Deno Deploy
 
-Set `server/server.ts` .
+Set `server/main.ts` .
 
 ## Sample architecture
 
