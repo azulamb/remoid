@@ -1,7 +1,8 @@
 {
 	"deno.enablePaths": [
 		"remote",
-		"server"
+		"server",
+		"tools"
 	],
 	"deno.enable": true,
 	"deno.codeLens.test": true,
