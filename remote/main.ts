@@ -210,7 +210,7 @@ class App implements RemoidWebSocketEventCallback {
 	}
 
 	protected calcPosition(value: number) {
-		return value;
+		return value * this.config.reducing;
 	}
 }
 
