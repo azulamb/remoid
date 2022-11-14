@@ -2,11 +2,12 @@
 	"tasks": {
 		"build": "tsc -p ./src/",
 		"remote": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run ./remote/main.ts",
-		"server": "deno run --allow-net --allow-env --allow-read --allow-write ./server/main.ts"
+		"server": "deno run --allow-net --allow-env --allow-read --allow-write ./server/main.ts",
+		"systemd": "deno run --allow-run ./tools/systemd.ts"
 	},
 	"lint": {
 		"files": {
-			"include": ["./client", "./server", "./src"]
+			"include": ["./client", "./server", "./src", "./tools"]
 		},
 		"rules": {
 		  "tags": ["recommended"],
@@ -16,7 +17,7 @@
 	},
 	"fmt": {
 		"files": {
-			"include": ["./client", "./server", "./src"]
+			"include": ["./client", "./server", "./src", "./tools"]
 		},
 		"options": {
 			"useTabs": true,
