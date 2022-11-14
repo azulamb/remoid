@@ -69,8 +69,8 @@ class App implements RemoidWebSocketEventCallback {
 			this.latest = Date.now();
 			const filepath = await this.adb.capture();
 			const image = await loadImage(filepath);
-			const w = image.width() / this.config.reducing;
-			const h = image.height() / this.config.reducing;
+			const w = Math.floor(image.width() / this.config.reducing);
+			const h = Math.floor(image.height() / this.config.reducing);
 			const canvas = createCanvas(w, h);
 			const context = canvas.getContext('2d');
 			context.drawImage(image, 0, 0, image.width(), image.height(), 0, 0, w, h);
