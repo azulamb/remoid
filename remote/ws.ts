@@ -29,7 +29,7 @@ export class RemoidWebSocket {
 	constructor(url: string) {
 		this.url = new URL(url);
 		this.url.pathname = '/remote';
-		this.url.protocol = this.url.protocol === 'https' ? 'wss' : 'ws';
+		this.url.protocol = this.url.protocol.replace('http', 'ws');
 	}
 
 	public setRetryTime(retryTime?: number) {
