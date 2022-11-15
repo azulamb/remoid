@@ -13,7 +13,12 @@ function exec(...command: string[]) {
 
 const USER = await exec('whoami');
 const DIR = await exec('pwd');
-const DENO = await exec('echo', '$DENO_INSTALL');
+const DENO = ((env) => {
+	if (!env) {
+		return '';
+	}
+	return env + '/bin/';
+})(Deno.env.get('DENO_INSTALL'));
 
 const template = `[Unit]
 Description=Remoid remote program.
@@ -22,7 +27,7 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=${DIR}
-ExecStart=${DENO}/bin/deno task remote
+ExecStart=${DENO}deno task remote
 Restart=on-failure
 Type=simple
 User=${USER}
