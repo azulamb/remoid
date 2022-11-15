@@ -22,7 +22,7 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=${DIR}
-ExecStart=${DENO}deno task remote
+ExecStart=${DENO} task remote
 Restart=on-failure
 Type=simple
 User=${USER}
