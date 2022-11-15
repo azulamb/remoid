@@ -8,8 +8,10 @@ Android remote tools.
   * Developer mode.
 * PC
   * adb
+  * deno
 * Server
-  * You can use DenoDeploy.
+  * deno
+    * You can use DenoDeploy.
 
 ## How to use.
 
@@ -95,9 +97,27 @@ Set `server/main.ts` .
 
 ## Other
 
-### Install deno in Raspberry Pi 4
+### Install deno in Raspberry Pi
+
+#### Install
 
 ```sh
 curl -fsSL https://deno.land/x/install/install.sh | sh
+```
+
+#### Build
+
+Raspberry pi 4 need build.
+
+##### Install Rust
+
+```sh
+curl https://sh.rustup.rs -sSf | sh
+source $HOME/.profile
+```
+
+##### Build deno
+
+```sh
 cargo install deno --locked
 ```
