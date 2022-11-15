@@ -20,6 +20,7 @@ Documentation=https://github.com/azulamb/remoid/blob/main/systemd.md
 After=network-online.target
 
 [Service]
+EnvironmentFile=/home/${USER}/.bashrc
 WorkingDirectory=${DIR}
 ExecStart=deno task remote
 Restart=on-failure
