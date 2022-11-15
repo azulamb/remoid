@@ -13,6 +13,7 @@ function exec(...command: string[]) {
 
 const USER = await exec('whoami');
 const DIR = await exec('pwd');
+const DENO = await exec('echo', '$DENO_INSTALL');
 
 const template = `[Unit]
 Description=Remoid remote program.
@@ -20,7 +21,7 @@ Documentation=https://github.com/azulamb/remoid/blob/main/systemd.md
 After=network-online.target
 
 [Service]
-EnvironmentFile=/home/${USER}/.bashrc
+Environment=PATH=${DENO}
 WorkingDirectory=${DIR}
 ExecStart=deno task remote
 Restart=on-failure
