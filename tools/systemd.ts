@@ -13,12 +13,7 @@ function exec(...command: string[]) {
 
 const USER = await exec('whoami');
 const DIR = await exec('pwd');
-const DENO = ((env) => {
-	if (!env) {
-		return '';
-	}
-	return env + '/bin/';
-})(Deno.env.get('DENO_INSTALL'));
+const DENO = await exec('which', 'deno');
 
 const template = `[Unit]
 Description=Remoid remote program.
