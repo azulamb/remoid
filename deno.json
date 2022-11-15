@@ -3,7 +3,7 @@
 		"build": "tsc -p ./src/",
 		"remote": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run ./remote/main.ts",
 		"server": "deno run --allow-net --allow-env --allow-read --allow-write ./server/main.ts",
-		"systemd": "deno run --allow-write --allow-run ./tools/systemd.ts"
+		"systemd": "sudo deno run --allow-run ./tools/systemd.ts > /etc/systemd/system/remoid.service"
 	},
 	"lint": {
 		"files": {

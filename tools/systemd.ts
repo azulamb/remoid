@@ -29,4 +29,4 @@ User=${USER}
 WantedBy=multi-user.target
 `;
 
-await Deno.writeTextFile('remoid.service', template);
+console.log(template);
