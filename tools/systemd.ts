@@ -21,9 +21,8 @@ Documentation=https://github.com/azulamb/remoid/blob/main/systemd.md
 After=network-online.target
 
 [Service]
-Environment=PATH=${DENO}
 WorkingDirectory=${DIR}
-ExecStart=deno task remote
+ExecStart=${DENO}/bin/deno task remote
 Restart=on-failure
 Type=simple
 User=${USER}
