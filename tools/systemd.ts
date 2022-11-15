@@ -30,3 +30,6 @@ WantedBy=multi-user.target
 `;
 
 await Deno.writeTextFile('remoid.service', template);
+
+console.log(`Exec install command.
+sudo ln -s ${DIR}/remoid.service /etc/systemd/system/remoid.service`);
