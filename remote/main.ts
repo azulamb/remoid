@@ -15,7 +15,7 @@ class App implements RemoidWebSocketEventCallback {
 	protected waitTime = 1000;
 	protected waitTimer = 0;
 	protected config: RemoidConfigData = {
-		reducing: 2,
+		reducing: 16,
 	};
 
 	constructor(adb: ADB) {

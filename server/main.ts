@@ -1,7 +1,7 @@
 /// <reference path="../types.d.ts" />
 
 import { Config } from './config.ts';
-import * as Minirachne from 'https://raw.githubusercontent.com/Azulamb/minirachne/main/mod.ts';
+import * as Minirachne from 'https://raw.githubusercontent.com/azulamb/minirachne/main/mod.ts';
 import { RemoteWebSocket } from './remote.ts';
 import { ClientWebSocket } from './client.ts';
 import { TwitterLogin } from './twitter.ts';
@@ -52,4 +52,4 @@ console.log(Minirachne.createAbsolutePath(import.meta, '../docs'));
 server.router.add('/*', new Minirachne.StaticRoute(Minirachne.createAbsolutePath(import.meta, '../remoid')), middleware);
 
 server.router.add('/*', new Minirachne.StaticRoute(Minirachne.createAbsolutePath(import.meta, '../docs')));
-server.run();
+server.start();
